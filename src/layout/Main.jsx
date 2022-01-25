@@ -14,14 +14,14 @@ class Main extends React.Component {
 
     componentDidMount() {  //компонент змонтувався
         // fetch('http://www.omdbapi.com/?i=tt3896198&apikey=6354aa01&s=matrix')
-        fetch('http://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&s=matrix') //використовуємо захист щоб не використали наш ключ
+        fetch('https://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&s=matrix') //використовуємо захист щоб не використали наш ключ
             .then(response => response.json())
             .then(data => this.setState( {movies: data.Search, loading: false} )) //каже що треба покласти в наші фільми в
     }
 
     searchMovies = (str, type = 'all') => {
         this.setState({loading: true})
-        fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=6354aa01&s=${str}${type !== 'all' ? `&type=${type}` : '' }`)
+        fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=6354aa01&s=${str}${type !== 'all' ? `&type=${type}` : '' }`)
             .then(response => response.json())
             .then(data => this.setState( {movies: data.Search, loading: false} )) //коли данні повністю загружені міняєм loading на false
     }
